@@ -1,28 +1,31 @@
-# OpenVoiceDoc
+# 🎙️ OpenVoiceDoc
 
-## AI Dictation Assistant for Legal Professionals
-
-OpenVoiceDoc is an open-source AI assistant designed to help legal document writers prepare documents faster using voice dictation.
+> Open-source AI Dictation Assistant for Legal Document Writers.
 
 ## Vision
 
-Instead of typing every sentence manually, the document writer simply speaks.
+OpenVoiceDoc helps legal document writers create documents faster using real-time voice dictation in English and Tamil.
 
-The AI listens and types in real time while supporting:
+Instead of typing every sentence manually, users simply speak while OpenVoiceDoc types directly into a rich document editor.
 
-- English
-- Tamil
-- Mixed English + Tamil
-- Voice editing commands
-- Microsoft Word export
+## Features
+
+- 🎤 Real-time voice dictation
+- 🇬🇧 English support
+- 🇮🇳 Tamil support
+- 🔄 Mixed-language dictation
+- ✍️ Voice editing commands
+- 📄 Microsoft Word (.docx) export
+- 💻 Offline speech recognition
 
 ## Tech Stack
 
-- Frontend: React + Vite
-- Backend: FastAPI
-- Speech Recognition: Faster-Whisper
-- Export: python-docx
+- React
+- FastAPI
+- Faster-Whisper
+- Python
+- Tiptap Editor
 
 ## Status
 
-🚧 Under Development
+🚧 Under active development.
