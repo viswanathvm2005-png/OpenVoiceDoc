@@ -1,34 +1,44 @@
-import { useEffect } from "react";
-import useSpeechRecognition from "../../hooks/useSpeechRecognition";
-import { useEditorContext } from "../../context/EditorContext";
+import { createSpeechRecognition } from "../../services/speechService";
 
 export default function RecordingToolbar() {
-    const {
-        transcript,
-        isListening,
-        startListening,
-        stopListening,
-    } = useSpeechRecognition();
+    let recognition: any = null;
 
-    const { editor } = useEditorContext();
+    const startRecording = () => {
+        recognition = createSpeechRecognition();
 
-    useEffect(() => {
-        if (!editor || !transcript) return;
+        if (!recognition) {
+            alert("Speech Recognition is not supported.");
+            return;
+        }
 
-        editor.commands.insertContent(transcript + " ");
-    }, [transcript, editor]);
+        recognition.onresult = (event: any) => {
+            let transcript = "";
+
+            for (let i = event.resultIndex; i < event.results.length; i++) {
+                transcript += event.results[i][0].transcript;
+            }
+
+            console.log("Transcript:", transcript);
+        };
+
+        recognition.start();
+    };
+
+    const stopRecording = () => {
+        recognition?.stop();
+    };
 
     return (
         <div className="bg-white border-b px-6 py-4 flex gap-4">
             <button
-                onClick={startListening}
+                onClick={startRecording}
                 className="bg-red-600 text-white px-5 py-2 rounded"
             >
-                🎤 {isListening ? "Listening..." : "Start Recording"}
+                🎤 Start Recording
             </button>
 
             <button
-                onClick={stopListening}
+                onClick={stopRecording}
                 className="bg-gray-700 text-white px-5 py-2 rounded"
             >
                 ⏹ Stop
