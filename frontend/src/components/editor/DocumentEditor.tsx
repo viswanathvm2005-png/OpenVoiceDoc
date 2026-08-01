@@ -1,14 +1,20 @@
-export default function DocumentEditor() {
-    return (
-        <div className="bg-white rounded-lg shadow p-6 min-h-[600px]">
-            <h2 className="text-xl font-semibold mb-4">
-                📄 Legal Document
-            </h2>
+import { EditorContent, useEditor } from "@tiptap/react";
+import StarterKit from "@tiptap/starter-kit";
 
-            <textarea
-                className="w-full h-[500px] border rounded p-4 outline-none resize-none"
-                placeholder="Start dictating here..."
-            />
+export default function DocumentEditor() {
+    const editor = useEditor({
+        extensions: [StarterKit],
+        content: `
+      <h1>Legal Document</h1>
+      <p>Start dictating here...</p>
+    `,
+    });
+
+    if (!editor) return null;
+
+    return (
+        <div className="bg-white shadow-lg rounded-lg w-[800px] min-h-[1000px] mx-auto p-12">
+            <EditorContent editor={editor} />
         </div>
     );
 }

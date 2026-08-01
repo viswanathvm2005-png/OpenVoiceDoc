@@ -1,21 +1,35 @@
 import Header from "./Header";
 import Ribbon from "../ribbon/Ribbon";
-import RecordingToolbar from "../recording/RecordingToolbar";
-import DocumentEditor from "../editor/DocumentEditor";
-import StatusBar from "../status/StatusBar";
+import Toolbar from "@/components/toolbar/Toolbar";
+import Sidebar from "../sidebar/Sidebar";
+import Editor from "../document/Editor";
+import AIPanel from "../ai/AIPanel";
+import Footer from "@/components/statusBar/Footer";
 
 export default function MainLayout() {
     return (
-        <div className="min-h-screen flex flex-col bg-gray-100">
+        <div className="h-screen flex flex-col bg-gray-100">
+
             <Header />
+
             <Ribbon />
-            <RecordingToolbar />
 
-            <main className="flex-1 p-6">
-                <DocumentEditor />
-            </main>
+            <Toolbar />
 
-            <StatusBar />
+            <div className="flex flex-1 overflow-hidden">
+
+                <Sidebar />
+
+                <main className="flex-1 p-8 bg-gray-200 overflow-auto flex justify-center">
+                    <Editor />
+                </main>
+
+                <AIPanel />
+
+            </div>
+
+            <Footer />
+
         </div>
     );
 }
