@@ -1,10 +1,11 @@
 import Header from "./Header";
 import Ribbon from "../ribbon/Ribbon";
-import Toolbar from "@/components/toolbar/Toolbar";
+import Toolbar from "../toolbar/Toolbar";
+import RecordingToolbar from "../recording/RecordingToolbar";
 import Sidebar from "../sidebar/Sidebar";
 import Editor from "../document/Editor";
 import AIPanel from "../ai/AIPanel";
-import Footer from "@/components/statusBar/Footer";
+import Footer from "../statusBar/Footer";
 
 export default function MainLayout() {
     return (
@@ -15,6 +16,9 @@ export default function MainLayout() {
             <Ribbon />
 
             <Toolbar />
+
+            {/* ADD THIS */}
+            <RecordingToolbar />
 
             <div className="flex flex-1 overflow-hidden">
 

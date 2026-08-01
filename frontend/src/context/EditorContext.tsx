@@ -1,4 +1,10 @@
-import { createContext, useContext, useState } from "react";
+import {
+    createContext,
+    useContext,
+    useMemo,
+    useState,
+    ReactNode,
+} from "react";
 import type { Editor } from "@tiptap/react";
 
 type EditorContextType = {
@@ -14,12 +20,20 @@ const EditorContext = createContext<EditorContextType>({
 export function EditorProvider({
                                    children,
                                }: {
-    children: React.ReactNode;
+    children: ReactNode;
 }) {
     const [editor, setEditor] = useState<Editor | null>(null);
 
+    const value = useMemo(
+        () => ({
+            editor,
+            setEditor,
+        }),
+        [editor]
+    );
+
     return (
-        <EditorContext.Provider value={{ editor, setEditor }}>
+        <EditorContext.Provider value={value}>
             {children}
         </EditorContext.Provider>
     );
